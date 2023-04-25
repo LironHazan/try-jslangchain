@@ -5,11 +5,19 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "ingest": "npm run build && node ./dist/try-jslangchain ingest"
   },
   "private": true,
+  "bin": "./src/main.js",
   "dependencies": {
+    "@pinecone-database/pinecone": "^0.0.14",
     "axios": "^1.0.0",
+    "commander": "^10.0.1",
+    "dotenv": "^16.0.3",
+    "langchain": "^0.0.63",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^3.5.141",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -35,5 +43,8 @@
     "ts-jest": "^29.0.5",
     "ts-node": "10.9.1",
     "typescript": "~4.9.5"
+  },
+  "volta": {
+    "node": "18.16.0"
   }
 }
