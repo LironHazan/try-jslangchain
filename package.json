@@ -6,12 +6,12 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "ingest": "npm run build && node ./dist/try-jslangchain ingest"
+    "gen": "npm run build && node ./dist/try-jslangchain test"
   },
   "private": true,
   "bin": "./src/main.js",
   "dependencies": {
-    "@pinecone-database/pinecone": "^0.0.14",
+    "@opensearch-project/opensearch": "^2.2.1",
     "axios": "^1.0.0",
     "commander": "^10.0.1",
     "dotenv": "^16.0.3",

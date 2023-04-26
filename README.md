@@ -2,7 +2,7 @@
 
 ----
 
-CLI for chatting with a pdf 
+Experimenting LLM with Opensearch and langchain
 
 ----
 
