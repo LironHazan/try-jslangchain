@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx build",
+    "startTime": "2023-04-25T15:34:34.746Z",
+    "endTime": "2023-04-25T15:34:37.041Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "try-jslangchain:build:production",
+      "target": "build",
+      "projectName": "try-jslangchain",
+      "hash": "70411bf6f0a3e40f98972107b3f2d8957a19d2c968619755fa8943b667128c7d",
+      "startTime": "2023-04-25T15:34:34.750Z",
+      "endTime": "2023-04-25T15:34:37.040Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}

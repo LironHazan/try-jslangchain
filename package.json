@@ -6,17 +6,18 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "ingest": "npm run build && node ./dist/try-jslangchain ingest",
     "gen": "npm run build && node ./dist/try-jslangchain test"
   },
   "private": true,
   "bin": "./src/main.js",
   "dependencies": {
+    "@huggingface/inference": "^1.8.0",
     "@opensearch-project/opensearch": "^2.2.1",
     "axios": "^1.0.0",
     "commander": "^10.0.1",
     "dotenv": "^16.0.3",
     "langchain": "^0.0.63",
-    "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^3.5.141",
     "tslib": "^2.3.0"
   },

@@ -1,7 +1,8 @@
 import { Client } from "@opensearch-project/opensearch";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { OpenSearchVectorStore } from "langchain/vectorstores/opensearch";
-import { Document } from "langchain/document";
+import { JSONLoader } from "langchain/document_loaders/fs/json";
+
 
 
 export async function run() {
@@ -9,25 +10,17 @@ export async function run() {
         nodes: [process.env.OPENSEARCH_URL ?? 'http://127.0.0.1:9200'],
     });
 
-    const docs = [
-        new Document({
-            metadata: { foo: "bar" },
-            pageContent: "opensearch is also a vector db",
-        }),
-        new Document({
-            metadata: { foo: "bar" },
-            pageContent: "the quick brown fox jumped over the lazy dog",
-        }),
-        new Document({
-            metadata: { baz: "qux" },
-            pageContent: "lorem ipsum dolor sit amet",
-        }),
-        new Document({
-            metadata: { baz: "qux" },
-            pageContent:
-                "OpenSearch is a scalable, flexible, and extensible open-source software suite for search, analytics, and observability applications",
-        }),
-    ];
+    const loader = new JSONLoader(
+        "src/ingestor/example.json",
+        ["/taskId", "/target"]
+    );
+
+    const docs = await loader.load();
+    console.log(docs)
+
+    // todo: plugin https://opensearch.org/docs/latest/search-plugins/neural-search/
+    // How to load local model (all-miniLM-L6-v2 pt) for creating embeddings instead of using OpenAIEmbeddings ?
+    // Or if there's a way using hugingface API? // const hf = new HfInference(process.env.HUGFACE_READ_API ?? '')
 
     await OpenSearchVectorStore.fromDocuments(docs, new OpenAIEmbeddings(), {
         client,
