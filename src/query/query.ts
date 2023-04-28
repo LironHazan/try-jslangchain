@@ -14,7 +14,7 @@ export async function run() {
         client,
     });
 
-    const results = await vectorStore.similaritySearch("hello world", 1);
+    const results = await vectorStore.similaritySearch("build", 1);
     console.log(JSON.stringify(results, null, 2));
 
     const model = new OpenAI();
@@ -22,7 +22,7 @@ export async function run() {
         k: 1,
         returnSourceDocuments: true,
     });
-    const response = await chain.call({ query: "What is opensearch?" });
+    const response = await chain.call({ query: "What is a task?" });
 
     console.log(JSON.stringify(response, null, 2));
 
